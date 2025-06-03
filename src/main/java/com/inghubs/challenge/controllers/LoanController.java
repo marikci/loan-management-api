@@ -27,13 +27,14 @@ public class LoanController {
   private final LoanModelMapper mapper;
 
   @PostMapping("/customers/{customerId}/loans")
+  @PreAuthorize("hasRole('ADMIN') or #customerId == principal.id")
   public ResponseEntity<LoanResponse> createLoan(@PathVariable("customerId") Long customerId, @RequestBody @Valid LoanCreateRequest request) throws Exception {
     LoanModel loan = loanService.createLoan(customerId, mapper.toModel(request));
     return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toDto(loan));
   }
 
   @GetMapping("/customers/{customerId}")
-  @PreAuthorize("hasRole('ADMIN') or #customerId == authentication.principal.customerId")
+  @PreAuthorize("hasRole('ADMIN') or #customerId == principal.id")
   public ResponseEntity<List<LoanResponse>> listLoans(@PathVariable("customerId") Long customerId) {
     List<LoanModel> loans = loanService.getLoansByCustomer(customerId);
     return ResponseEntity.ok(mapper.toDtos(loans));

@@ -15,4 +15,15 @@ public class LoanResponse {
   private LocalDate createDate;
   private Boolean isPaid;
   private CustomerBaseDto customer;
+
+  public static LoanResponse of(Long id, Double loanAmount, Integer numberOfInstallment, LocalDate createDate, Boolean isPaid, CustomerBaseDto customer){
+    return LoanResponse.builder()
+        .id(id)
+        .loanAmount(loanAmount)
+        .numberOfInstallment(numberOfInstallment)
+        .createDate(createDate)
+        .isPaid(isPaid)
+        .customer(customer)
+        .build();
+  }
 }

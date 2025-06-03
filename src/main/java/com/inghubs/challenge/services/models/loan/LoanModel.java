@@ -25,4 +25,15 @@ public class LoanModel {
         .id(id)
         .build();
   }
+
+  public static LoanModel of(Long id, Double loanAmount, Integer numberOfInstallment, LocalDate createDate, Boolean isPaid, CustomerModel customer){
+    return LoanModel.builder()
+        .id(id)
+        .loanAmount(loanAmount)
+        .numberOfInstallment(numberOfInstallment)
+        .createDate(createDate)
+        .isPaid(isPaid)
+        .customer(customer)
+        .build();
+  }
 }

@@ -9,6 +9,7 @@ import com.inghubs.challenge.services.models.loanInstallment.LoanInstallmentMode
 import com.inghubs.challenge.services.models.loanInstallment.PaymentResultModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,12 +28,14 @@ public class LoanInstallmentController {
   private final LoanInstallmentModelMapper mapper;
 
   @GetMapping("/loans/{loanId}")
+  @PreAuthorize("hasRole('ADMIN') or #customerId == principal.id")
   public ResponseEntity<List<LoanInstallmentResponse>> listInstallments(@PathVariable("loanId") Long loanId) {
     List<LoanInstallmentModel> installments = service.getInstallmentsByLoan(loanId);
     return ResponseEntity.ok(mapper.toDtos(installments));
   }
 
   @PostMapping("/loans/{loanId}/pay")
+  @PreAuthorize("hasRole('ADMIN') or #customerId == principal.id")
   public ResponseEntity<PaymentResultResponse> payInstallments(@PathVariable("loanId") Long loanId, @RequestParam("amount") double amount) throws Exception {
     PaymentResultModel result = service.payInstallments(loanId, amount);
     return ResponseEntity.ok(mapper.toDto(result));

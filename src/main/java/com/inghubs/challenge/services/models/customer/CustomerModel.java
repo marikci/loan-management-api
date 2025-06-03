@@ -16,4 +16,9 @@ public class CustomerModel {
   private Double creditLimit;
   private Double usedCreditLimit;
 
+  public static CustomerModel of(Long id){
+    return CustomerModel.builder()
+        .id(id)
+        .build();
+  }
 }

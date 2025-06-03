@@ -29,4 +29,13 @@ public class LoanInstallmentModel {
         .isPaid(false)
         .build();
   }
+
+  public static LoanInstallmentModel of(Long id,Double amount, LocalDate dueDate, Boolean isPaid, Long loanId){
+    return LoanInstallmentModel.builder()
+        .loan(LoanModel.of(loanId))
+        .amount(amount)
+        .dueDate(dueDate)
+        .isPaid(isPaid)
+        .build();
+  }
 }

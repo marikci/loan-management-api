@@ -18,6 +18,14 @@ public class LoanCreateModel {
   private Double interestRate;
   private Integer numberOfInstallment;
 
+  public static LoanCreateModel of(Double amount,Double interestRate, Integer numberOfInstallment){
+    return LoanCreateModel.builder()
+        .amount(amount)
+        .interestRate(interestRate)
+        .numberOfInstallment(numberOfInstallment)
+        .build();
+  }
+
   public boolean isAllowingInstallment(){
     return ALLOWED_INSTALLMENTS.contains(this.numberOfInstallment);
   }

@@ -14,4 +14,13 @@ public class LoanInstallmentResponse {
   private LocalDate dueDate;
   private LocalDate paymentDate;
   private Boolean isPaid;
+
+  public static LoanInstallmentResponse of(Long id, Double amount, LocalDate dueDate, Boolean isPaid){
+    return LoanInstallmentResponse.builder()
+        .id(id)
+        .amount(amount)
+        .dueDate(dueDate)
+        .isPaid(isPaid)
+        .build();
+  }
 }
