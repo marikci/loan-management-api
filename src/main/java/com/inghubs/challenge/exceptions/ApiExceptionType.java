@@ -10,7 +10,8 @@ import static java.util.Objects.nonNull;
 public enum ApiExceptionType {
   CUSTOMER_NOT_FOUND_EXCEPTION(1, "exception.customer.not_found", HttpStatus.BAD_REQUEST),
   CUSTOMER_UPDATE_LIMIT_EXCEPTION(2, "exception.customer.update_limit_problem", HttpStatus.BAD_REQUEST),
-  LOAN_NOT_FOUND_EXCEPTION(3, "exception.loan.not_found", HttpStatus.BAD_REQUEST);
+  LOAN_NOT_FOUND_EXCEPTION(3, "exception.loan.not_found", HttpStatus.BAD_REQUEST),
+  USER_NOT_FOUND_EXCEPTION(4,"exception.user.not_found", HttpStatus.BAD_REQUEST);
 
   @Getter
   private final int code;

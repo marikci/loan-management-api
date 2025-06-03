@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +33,7 @@ public class LoanController {
   }
 
   @GetMapping("/customers/{customerId}")
+  @PreAuthorize("hasRole('ADMIN') or #customerId == authentication.principal.customerId")
   public ResponseEntity<List<LoanResponse>> listLoans(@PathVariable("customerId") Long customerId) {
     List<LoanModel> loans = loanService.getLoansByCustomer(customerId);
     return ResponseEntity.ok(mapper.toDtos(loans));
