@@ -1,7 +1,7 @@
 package com.inghubs.challenge.controllers;
 
-import com.inghubs.challenge.dto.installment.response.LoanInstallmentResponse;
-import com.inghubs.challenge.dto.installment.response.PaymentResultResponse;
+import com.inghubs.challenge.dtos.installment.response.LoanInstallmentResponse;
+import com.inghubs.challenge.dtos.installment.response.PaymentResultResponse;
 import com.inghubs.challenge.mappers.loanInstallment.LoanInstallmentModelMapper;
 import com.inghubs.challenge.services.LoanInstallmentService;
 import com.inghubs.challenge.services.LoanService;

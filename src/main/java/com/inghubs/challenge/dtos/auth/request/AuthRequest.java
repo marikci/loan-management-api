@@ -1,4 +1,4 @@
-package com.inghubs.challenge.dto.auth.request;
+package com.inghubs.challenge.dtos.auth.request;
 
 import lombok.Data;
 

@@ -1,7 +1,7 @@
 package com.inghubs.challenge.controllers;
 
-import com.inghubs.challenge.dto.loan.request.LoanCreateRequest;
-import com.inghubs.challenge.dto.loan.response.LoanResponse;
+import com.inghubs.challenge.dtos.loan.request.LoanCreateRequest;
+import com.inghubs.challenge.dtos.loan.response.LoanResponse;
 import com.inghubs.challenge.mappers.loan.LoanModelMapper;
 import com.inghubs.challenge.services.LoanService;
 import com.inghubs.challenge.services.models.loan.LoanModel;

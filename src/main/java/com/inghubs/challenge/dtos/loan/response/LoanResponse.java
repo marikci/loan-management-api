@@ -1,6 +1,6 @@
-package com.inghubs.challenge.dto.loan.response;
+package com.inghubs.challenge.dtos.loan.response;
 
-import com.inghubs.challenge.dto.customer.CustomerBaseDto;
+import com.inghubs.challenge.dtos.customer.CustomerBaseDto;
 import lombok.Builder;
 import lombok.Data;
 

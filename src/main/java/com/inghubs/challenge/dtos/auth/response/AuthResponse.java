@@ -1,4 +1,4 @@
-package com.inghubs.challenge.dto.auth.response;
+package com.inghubs.challenge.dtos.auth.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

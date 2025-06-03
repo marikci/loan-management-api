@@ -1,4 +1,4 @@
-package com.inghubs.challenge.dto.loan.request;
+package com.inghubs.challenge.dtos.loan.request;
 
 import lombok.Builder;
 import lombok.Data;

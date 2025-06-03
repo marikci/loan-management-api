@@ -1,4 +1,4 @@
-package com.inghubs.challenge.dto.customer;
+package com.inghubs.challenge.dtos.customer;
 
 import lombok.Builder;
 import lombok.Data;

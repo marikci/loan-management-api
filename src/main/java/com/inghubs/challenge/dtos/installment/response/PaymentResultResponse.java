@@ -1,4 +1,4 @@
-package com.inghubs.challenge.dto.installment.response;
+package com.inghubs.challenge.dtos.installment.response;
 
 import lombok.Builder;
 import lombok.Data;

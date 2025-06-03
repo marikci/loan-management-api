@@ -1,8 +1,8 @@
 package com.inghubs.challenge.controllers;
 
 import com.inghubs.challenge.configs.JwtUtil;
-import com.inghubs.challenge.dto.auth.request.AuthRequest;
-import com.inghubs.challenge.dto.auth.response.AuthResponse;
+import com.inghubs.challenge.dtos.auth.request.AuthRequest;
+import com.inghubs.challenge.dtos.auth.response.AuthResponse;
 import com.inghubs.challenge.services.UserService;
 import com.inghubs.challenge.services.models.user.UserModel;
 import lombok.RequiredArgsConstructor;
