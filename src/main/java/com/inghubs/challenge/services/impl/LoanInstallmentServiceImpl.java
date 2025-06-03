@@ -13,10 +13,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
 import java.util.List;
 
+import static com.inghubs.challenge.utils.Constants.DISCOUNT_RATE;
 import static com.inghubs.challenge.utils.Constants.MAX_ALLOWING_PAY_INSTALLMENT;
+import static com.inghubs.challenge.utils.Constants.PENALTY_RATE;
 
 @Service
 @RequiredArgsConstructor
@@ -34,6 +37,7 @@ public class LoanInstallmentServiceImpl implements LoanInstallmentService {
   public PaymentResultModel payInstallments(Long loanId, double amount) {
     LoanModel loan = loanService.getLoanById(loanId);
 
+    LocalDate today = LocalDate.now();
     LocalDate firstOfThisMonth = LocalDate.now().with(TemporalAdjusters.firstDayOfMonth());
     LocalDate lastAllowedDue = firstOfThisMonth.plusMonths(MAX_ALLOWING_PAY_INSTALLMENT);
 
@@ -44,13 +48,30 @@ public class LoanInstallmentServiceImpl implements LoanInstallmentService {
 
     for (LoanInstallmentEntity installment : eligibleInstallments) {
       double installmentAmount = installment.getAmount();
+      LocalDate dueDate = installment.getDueDate();
+      long daysDiff = ChronoUnit.DAYS.between(today, dueDate);
+
+      double finalAmount;
+
+      if (daysDiff > 0) {
+        double discount = installmentAmount * DISCOUNT_RATE * daysDiff;
+        finalAmount = installmentAmount - discount;
+      } else if (daysDiff < 0) {
+        long daysLate = Math.abs(daysDiff);
+        double penalty = installmentAmount * PENALTY_RATE * daysLate;
+        finalAmount = installmentAmount + penalty;
+      } else {
+        finalAmount = installmentAmount;
+      }
+
+
       if (amount >= installmentAmount) {
-        installment.payInstallment(installmentAmount);
+        installment.payInstallment(finalAmount);
         repository.save(installment);
 
-        amount -= installmentAmount;
+        amount -= finalAmount;
         paidCount++;
-        totalSpent += installmentAmount;
+        totalSpent += finalAmount;
       } else {
         break;
       }

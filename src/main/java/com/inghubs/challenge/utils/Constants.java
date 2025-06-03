@@ -7,4 +7,6 @@ public class Constants {
   public static final double ALLOWING_MIN_INTEREST_RATE = 0.1;
   public static final double ALLOWING_MAX_INTEREST_RATE = 0.5;
   public static final int MAX_ALLOWING_PAY_INSTALLMENT = 2;
+  public static final double DISCOUNT_RATE = 0.001;
+  public static final double PENALTY_RATE = 0.001;
 }
