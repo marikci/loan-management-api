@@ -150,16 +150,13 @@ docker run --env-file .env -p 8080:8080 loan-management-api
 
 -   `POST /api/v1/auth/login`
     
--   `POST /api/v1/customers/register`
-    
 -   `POST /api/v1/loans/customers/{customerId}/loans`
     
--   `GET /api/v1/loans/customers/{customerId}`
+-   `POST /api/v1/loans/customers/{customerId}`
     
--   `GET /api/v1/loans/{loanId}/installments`
+-   `GET /api/v1/loan-installments/loans/{loanId}`
     
--   `POST /api/v1/loans/{loanId}/pay?amount=1000`
-    
+-   `POST /api/v1/loan-installments/loans/{loanId}/pay`
 
 ----------
 
