@@ -122,7 +122,7 @@ JWT_TOKEN_EXPIRATION_TIME=86400000
 ### Local (Maven)
 
 ```bash
-git clone https://github.com/your-username/loan-management-api.git
+git clone https://github.com/marikci/loan-management-api.git
 cd loan-management-api
 mvn clean install
 java -jar target/loan-management-api-1.0.0.jar
