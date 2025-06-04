@@ -28,7 +28,7 @@ public class LoanController {
 
   @PostMapping("/customers/{customerId}/loans")
   @PreAuthorize("hasRole('ADMIN') or #customerId == principal.id")
-  public ResponseEntity<LoanResponse> createLoan(@PathVariable("customerId") Long customerId, @RequestBody @Valid LoanCreateRequest request) throws Exception {
+  public ResponseEntity<LoanResponse> createLoan(@PathVariable("customerId") Long customerId, @RequestBody @Valid LoanCreateRequest request) {
     LoanModel loan = loanService.createLoan(customerId, mapper.toModel(request));
     return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toDto(loan));
   }
